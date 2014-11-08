@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/linear_layout_edit_chill"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#C19869">
+
+    <ImageButton
+            style="@style/ChillImageView"
+            android:id="@+id/button_select_chill_type"
+            android:background="@drawable/coffee"
+            android:layout_gravity="center_horizontal"/>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="horizontal"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content">
+
+        <ImageView
+                style="@style/DetailsImageView"
+                android:id="@+id/image_view_location"
+                android:background="@drawable/logo"/>
+
+        <EditText
+                style="@style/EditTextUnderline"
+                android:gravity="start|center_vertical"
+                android:hint="@string/location"
+                android:id="@+id/edit_text_location"/>
+
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="horizontal"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content">
+
+        <ImageView
+                style="@style/DetailsImageView"
+                android:id="@+id/image_view_time"
+                android:background="@drawable/logo"/>
+
+        <EditText
+                style="@style/EditTextUnderline"
+                android:gravity="start|center_vertical"
+                android:hint="@string/time"
+                android:id="@+id/edit_text_date"/>
+
+    </LinearLayout>
+
+    <Button
+            style="@style/ButtonWithOutline"
+            android:layout_marginTop="40dp"
+            android:text="@string/save"
+            android:id="@+id/button_save"/>
+
+</LinearLayout>

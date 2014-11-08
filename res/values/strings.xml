@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CHILL</string>
+
+    <!-- Login Activity -->
+    <string name="login">LOGIN</string>
+    <string name="register">REGISTER</string>
+    <string name="username">USERNAME</string>
+    <string name="password">PASSWORD</string>
+
+    <!-- Edit Chill Activity-->
+    <string name="save">SAVE</string>
+    <string name="location">LOCATION</string>
+    <string name="time">TIME</string>
+
+    <!-- Message Fragment -->
+    <string name="add_friend">+</string>
+    <string name="edit_chill">EDIT</string>
+
+    <!-- List View Message Item -->
+    <string name="accept">YES</string>
+    <string name="dismiss">NO</string>
+
+</resources>

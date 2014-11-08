@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$USER_HOME$/Desktop/Development/SDK/FloatingActionButton-master/FloatingActionButton/FloatingActionButton.iml" filepath="$USER_HOME$/Desktop/Development/SDK/FloatingActionButton-master/FloatingActionButton/FloatingActionButton.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chill.iml" filepath="$PROJECT_DIR$/chill.iml" />
+      <module fileurl="file://$USER_HOME$/Desktop/Development/SDK/NineOldAndroids-master/library/library.iml" filepath="$USER_HOME$/Desktop/Development/SDK/NineOldAndroids-master/library/library.iml" />
+    </modules>
+  </component>
+</project>
+

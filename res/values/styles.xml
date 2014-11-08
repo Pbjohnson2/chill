@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ButtonWithOutline">
+        <item name="android:layout_width">160dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:background">@drawable/button_with_outline</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+    <style name="EditTextUnderline">
+        <item name="android:maxLength">12</item>
+        <item name="android:layout_width">300dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColorHint">#FFFFFF</item>
+        <item name="android:gravity">bottom|center_horizontal</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:background">@drawable/edittext_underline</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+    <style name="ChillImageView">
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">150dp</item>
+    </style>
+    <style name="DetailsImageView">
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">50dp</item>
+    </style>
+    <style name="ListViewItem">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">80dp</item>
+    </style>
+    <style name="ButtonNoOutline">
+        <item name="android:layout_width">88dp</item>
+        <item name="android:layout_height">36dp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+</resources>
