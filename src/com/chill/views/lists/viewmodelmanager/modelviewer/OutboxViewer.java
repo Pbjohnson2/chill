@@ -10,21 +10,26 @@ import com.chill.model.local.ChillManager;
 import com.chill.model.local.chills.ChillDefinition;
 import com.chill.model.local.chills.ChillDefinitionConstants;
 import com.chill.model.remote.Message;
+import org.ocpsoft.prettytime.PrettyTime;
+
+import java.text.SimpleDateFormat;
 
 public class OutboxViewer extends InboxViewer {
+    private static final PrettyTime PRETTY_TIME = new PrettyTime();
     public OutboxViewer () {
 
     }
 
     private class ViewHolder {
-        RelativeLayout outbox_item;
-        View styleBar;
+        LinearLayout layoutWithButtons;
+        RelativeLayout layoutWithoutButtons;
         ImageView chill;
         TextView username;
+        TextView usernameAlias;
         TextView location;
         TextView date;
-        Button acceptButton;
-        Button dismissButton;
+        TextView dateCreated;
+        ImageView messageStatusImage;
     }
 
     @Override
@@ -34,38 +39,39 @@ public class OutboxViewer extends InboxViewer {
         if (convertView == null) {
             final LayoutInflater layoutInflater = LayoutInflater.from(context);
             holder = new ViewHolder();
-            convertView = layoutInflater.inflate(R.layout.list_view_message_item, parent, false);
+            convertView = layoutInflater.inflate(R.layout.list_view_outbox_item, parent, false);
             // Locate the TextViews in listview_item.xml
-            holder.outbox_item = (RelativeLayout) convertView.findViewById(R.id.relative_layout_item);
-            holder.styleBar = convertView.findViewById(R.id.style_bar);
+            holder.layoutWithButtons = (LinearLayout) convertView.findViewById(R.id.linear_layout_all);
+            holder.layoutWithoutButtons = (RelativeLayout) convertView.findViewById(R.id.relative_layout_item);
             holder.chill = (ImageView) convertView.findViewById(R.id.image_chill);
             holder.username = (TextView) convertView.findViewById(R.id.textview_username);
+            holder.usernameAlias = (TextView) convertView.findViewById(R.id.textview_username_alias);
             holder.location = (TextView) convertView.findViewById(R.id.textview_location);
             holder.date = (TextView) convertView.findViewById(R.id.textview_date);
-            holder.acceptButton = (Button) convertView.findViewById(R.id.button_accept);
-            holder.dismissButton = (Button) convertView.findViewById(R.id.button_dismiss);
+            holder.dateCreated = (TextView) convertView.findViewById(R.id.textview_date_created);
+            holder.messageStatusImage = (ImageView) convertView.findViewById(R.id.image_view_message_status);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
         final ChillDefinition chillDefinition = chillManager.getChillDefinition(item.getChillId());
-        holder.chill.setBackground(context.getResources().getDrawable(chillDefinition.getLayout()));
+        holder.layoutWithButtons.setBackgroundColor(getColor(chillDefinition.getColor()));
+        holder.chill.setImageResource(chillDefinition.getLayout());
         setText(item, holder);
-        setBackgroundColors(item, holder, chillDefinition);
-        hideButtons(holder);
+        setMessageStatusImage(context, item, holder);
         return convertView;
     }
 
-    private void setBackgroundColors(final Message message, final ViewHolder holder, final ChillDefinition chillDefinition){
+    private void setMessageStatusImage(final Context context, final Message message, final ViewHolder holder){
         switch (message.getStatus()) {
             case Message.STATUS_ACCEPTED:
-                holder.outbox_item.setBackgroundColor(getColor(ChillDefinitionConstants.ACCEPT_CHILL));
+                holder.messageStatusImage.setImageDrawable(context.getResources().getDrawable(R.drawable.acceptwithbackgroundicon));
                 break;
             case Message.STATUS_DECLINED:
-                holder.outbox_item.setBackgroundColor(getColor(ChillDefinitionConstants.DISMISS_CHILL));
+                holder.messageStatusImage.setImageDrawable(context.getResources().getDrawable(R.drawable.dismisswithbackgroundicon));
                 break;
-            case Message.STATUS_PENDING:
-                holder.outbox_item.setBackgroundColor(getColor(chillDefinition));
+            default:
+                holder.messageStatusImage.setImageDrawable(context.getResources().getDrawable(R.drawable.pendingwithbackgroundicon));
                 break;
         }
     }
@@ -76,17 +82,13 @@ public class OutboxViewer extends InboxViewer {
 
     private void setText(final Message message, final ViewHolder holder) {
         holder.username.setText(message.getTo().getUsername());
+        holder.usernameAlias.setText(message.getTo().getUsername().substring(0, 1));
         holder.location.setText(message.getLocation());
         holder.date.setText(message.getTime());
+        holder.dateCreated.setText(PRETTY_TIME.format(message.getCreatedAt()));
     }
 
     private int getColor(final ChillDefinition chillDefinition) {
         return (0xff000000 + Integer.parseInt(Integer.toHexString(chillDefinition.getColor()), 16));
-    }
-
-    private void hideButtons(final ViewHolder holder) {
-        holder.acceptButton.setVisibility(View.GONE);
-        holder.dismissButton.setVisibility(View.GONE);
-        holder.styleBar.setVisibility(View.GONE);
     }
 }

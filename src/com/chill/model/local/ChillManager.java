@@ -63,7 +63,7 @@ public class ChillManager {
             throw new NullPointerException("Key cannot be null");
         }
         if (!ChillDefinition.DEFINITIONS.containsKey(key)) {
-            throw new IllegalArgumentException("There was no definition found for that key");
+            return getChillDefinition(ChillDefinitionConstants.SEX);
         }
         return ChillDefinition.DEFINITIONS.get(key);
     }

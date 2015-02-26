@@ -10,6 +10,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.*;
 import com.chill.ParseServiceAccessor;
 import com.chill.R;
@@ -18,6 +19,7 @@ import com.chill.main.contracts.NavigationListener;
 import com.chill.model.local.ChillManager;
 import com.chill.model.local.ChillPreference;
 import com.chill.model.local.chills.ChillDefinition;
+import com.chill.model.local.chills.ChillDefinitionConstants;
 import com.chill.model.remote.User;
 import com.chill.util.TextValidator;
 import com.chill.views.lists.FriendListView;
@@ -31,11 +33,12 @@ public class MessageFragment extends Fragment {
     private TextView mLocation;
     private TextView mDate;
     private ListView mListView;
+    private ImageView mHeaderChillImage;
 
     private FriendListView mFriendListView;
     private FloatingActionButton mNavigateOutboxButton;
     private FloatingActionButton mNavigateInboxButton;
-    private Button mEditChillButton;
+    private ImageButton mEditChillButton;
 
     private LinearLayout mAddFriendLayout;
     private EditText mAddFriendEditText;
@@ -60,14 +63,15 @@ public class MessageFragment extends Fragment {
                 false);
         mListView.addHeaderView(header, null, false);
         mListView.addFooterView(footer, null, false);
+        mHeaderChillImage = (ImageView) header.findViewById(R.id.image_view_chill);
         mFriendListView.attachAdapter();
         mEditChillLayout = (RelativeLayout) rootView.findViewById(R.id.edit_chill);
         mLocation = (TextView) rootView.findViewById(R.id.textview_location);
         mDate = (TextView) rootView.findViewById(R.id.textview_date);
         mNavigateOutboxButton = (FloatingActionButton) rootView.findViewById(R.id.button_navigate_outbox);
         mNavigateInboxButton = (FloatingActionButton) rootView.findViewById(R.id.button_navigate_inbox);
-        mNavigateInboxButton.setDrawable(getResources().getDrawable(R.drawable.ic_logoblankbackground));
-        mEditChillButton = (Button) rootView.findViewById(R.id.button_edit_chill);
+
+        mEditChillButton = (ImageButton) rootView.findViewById(R.id.button_edit_chill);
 
         mAddFriendLayout = (LinearLayout) rootView.findViewById(R.id.add_friend_layout);
         mAddFriendEditText = (EditText) rootView.findViewById(R.id.add_friend);
@@ -85,13 +89,15 @@ public class MessageFragment extends Fragment {
     public void onResume() {
         super.onResume();
         initializeChillPreference();
+        initializeUI();
     }
 
     private void initializeChillPreference() {
         final ChillPreference chillPreference = mChillManager.getChillPreference();
         mLocation.setText(chillPreference.getLocation());
         mDate.setText(chillPreference.getDate());
-        final ChillDefinition definition = mChillManager.getChillDefinition(chillPreference.getChill().getId());
+        ChillDefinition definition = mChillManager.getChillDefinition(chillPreference.getChill().getId());
+        mHeaderChillImage.setImageResource(definition.getLayout());
         setColors(0xff000000 + Integer.parseInt(Integer.toHexString(definition.getColor()), 16));
     }
 
@@ -137,6 +143,20 @@ public class MessageFragment extends Fragment {
                 return false;
             }
         });
+        mAddFriendEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+
+            @Override
+            public boolean onEditorAction(TextView arg0, int actionId,
+                                          KeyEvent arg2) {
+                // hide the keyboard and search the web when the enter key
+                // button is pressed
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    new AddFriendTask().execute();
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     @Override
@@ -159,7 +179,7 @@ public class MessageFragment extends Fragment {
                 return new ServiceAccessorResult(false, "Please enter a username and password", null);
             }
 
-            final String username = mAddFriendEditText.getText().toString();
+            final String username = mAddFriendEditText.getText().toString().toUpperCase();
             final User friend = mServiceAccessor.addFriend(username);
 
             if (friend != null) {

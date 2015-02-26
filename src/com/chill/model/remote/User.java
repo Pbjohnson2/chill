@@ -5,7 +5,7 @@ import com.parse.*;
 import java.util.List;
 
 @ParseClassName("_User")
-public class User extends ParseUser{
+public class   User extends ParseUser{
 
 
     public User(){
@@ -32,6 +32,7 @@ public class User extends ParseUser{
         ParseQuery<Message>  inboxQuery = getDefaultMessageQuery();
         inboxQuery.include("from");
         inboxQuery.whereEqualTo("to", this);
+        inboxQuery.setLimit(15);
         return inboxQuery.find();
     }
 
@@ -39,6 +40,7 @@ public class User extends ParseUser{
         ParseQuery<Message>  outboxQuery = getDefaultMessageQuery();
         outboxQuery.include("to");
         outboxQuery.whereEqualTo("from", this);
+        outboxQuery.setLimit(15);
         return outboxQuery.find();
     }
 

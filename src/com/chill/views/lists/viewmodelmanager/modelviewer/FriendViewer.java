@@ -1,11 +1,13 @@
 package com.chill.views.lists.viewmodelmanager.modelviewer;
 
 import android.content.Context;
+import android.graphics.PorterDuff;
 import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.chill.ParseServiceAccessor;
@@ -25,6 +27,8 @@ public class FriendViewer implements ModelViewer<User> {
 
     private class ViewHolder {
         Button username;
+        ImageView usernameAliasImage;
+        TextView usernameAlias;
     }
 
     @Override
@@ -36,7 +40,9 @@ public class FriendViewer implements ModelViewer<User> {
             convertView = layoutInflater.inflate(R.layout.list_view_friend_item, parent, false);
             // Locate the TextViews in listview_item.xml
             holder.username = (Button) convertView.findViewById(R.id.username);
-            setTextColor(holder.username, chillManager);
+            holder.usernameAlias = (TextView) convertView.findViewById(R.id.textview_username_alias);
+            holder.usernameAliasImage = (ImageView) convertView.findViewById(R.id.image_name);
+            setTextColor(holder, chillManager);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -58,6 +64,7 @@ public class FriendViewer implements ModelViewer<User> {
             }
         });
         holder.username.setText(item.getUsername());
+        holder.usernameAlias.setText(item.getUsername().substring(0, 1));
         return convertView;
     }
 
@@ -94,8 +101,11 @@ public class FriendViewer implements ModelViewer<User> {
         toast.show();
     }
 
-    private void setTextColor(final TextView textView, final ChillManager chillManager) {
+    private void setTextColor(final ViewHolder holder, final ChillManager chillManager) {
         final ChillDefinition definition = chillManager.getChillDefinition(chillManager.getChillPreference().getChill().getId());
-        textView.setTextColor(0xff000000 + Integer.parseInt(Integer.toHexString(definition.getColor()), 16));
+        final int color = 0xff000000 + Integer.parseInt(Integer.toHexString(definition.getColor()), 16);
+        holder.username.setTextColor(color);
+        holder.usernameAlias.setTextColor(color);
+        holder.usernameAliasImage.setColorFilter(color, PorterDuff.Mode.SRC_ATOP);
     }
 }

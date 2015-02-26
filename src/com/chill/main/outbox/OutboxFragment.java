@@ -2,12 +2,14 @@ package com.chill.main.outbox;
 
 import android.app.Activity;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
 import com.chill.ChillConstants;
 import com.chill.R;
 import com.chill.main.contracts.NavigationListener;
@@ -16,6 +18,7 @@ import com.faizmalkani.floatingactionbutton.FloatingActionButton;
 
 public class OutboxFragment extends Fragment {
     private OutboxListView mOutboxListView;
+    private ListView mListView;
     private FloatingActionButton mNavigateMessageButton;
 
     private NavigationListener mNavigationListener;
@@ -25,6 +28,7 @@ public class OutboxFragment extends Fragment {
 
         final View rootView = inflater.inflate(R.layout.fragment_outbox, container, false);
         mOutboxListView = (OutboxListView) rootView.findViewById(R.id.outbox_list_view);
+        mListView = (ListView) mOutboxListView.findViewById(R.id.list_view_main);
         mNavigateMessageButton = (FloatingActionButton) rootView.findViewById(R.id.button_navigate_message);
 
         initializeUI();
@@ -32,7 +36,7 @@ public class OutboxFragment extends Fragment {
     }
 
     private void initializeUI(){
-        mOutboxListView.setDivider(getResources().getDrawable(R.drawable.list_view_divider_white));
+        mListView.getDivider().setColorFilter(0xff000000 + Integer.parseInt(Integer.toHexString(0xFFFFFF), 16), PorterDuff.Mode.SRC_ATOP);
         mNavigateMessageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

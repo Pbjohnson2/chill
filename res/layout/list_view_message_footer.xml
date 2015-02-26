@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              style="@style/ListViewItem"
-              android:orientation="vertical"
-              android:gravity="center_vertical"
-              android:background="#000000"
-              android:id="@+id/add_friend_layout">
+    style="@style/ListViewItem"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    android:background="#000000"
+    android:id="@+id/add_friend_layout">
+
     <EditText
-            android:gravity="center_vertical|center_horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textCursorDrawable="@null"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:textSize="48sp"
-            android:textColorHint="#FFFFFF"
-            android:hint="@string/add_friend"
-            android:textColor="#FFFFFF"
-            android:id="@+id/add_friend"
-            android:background="@null"
-            android:layout_gravity="center_horizontal"/>
+        android:gravity="center_vertical|center_horizontal"
+        android:inputType="text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:imeOptions="actionDone"
+        android:textCursorDrawable="@null"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textSize="48sp"
+        android:textColorHint="#FFFFFF"
+        android:hint="@string/add_friend"
+        android:textColor="#FFFFFF"
+        android:id="@+id/add_friend"
+        android:background="@null"
+        android:layout_gravity="center_horizontal" />
 </LinearLayout>

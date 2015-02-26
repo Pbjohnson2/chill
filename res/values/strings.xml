@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">CHILL</string>
+    <string name="app_name">Chill</string>
 
     <!-- Login Activity -->
     <string name="login">LOGIN</string>
@@ -10,6 +10,7 @@
 
     <!-- Edit Chill Activity-->
     <string name="save">SAVE</string>
+    <string name="cancel">CANCEL</string>
     <string name="location">LOCATION</string>
     <string name="time">TIME</string>
 

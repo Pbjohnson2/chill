@@ -1,51 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        style="@style/ListViewItem"
-        android:orientation="vertical"
-        android:gravity="center_vertical"
-        android:background="#000000"
-        android:id="@+id/edit_chill">
+    style="@style/ListViewItem"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    android:background="#000000"
+    android:paddingEnd="16dp"
+    android:id="@+id/edit_chill">
+
     <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="16dp"
-            android:src="@drawable/logo"
-            android:id="@+id/imageView"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentTop="true">
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:id="@+id/image_view_chill"
+        android:layout_centerVertical="true">
+
         <requestFocus />
     </ImageView>
+
     <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/image_view_chill">
+
+        <TextView
+            android:id="@+id/textview_location"
             android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:orientation="vertical"
-            android:gravity="center_vertical"
-            android:paddingLeft="20dp"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/imageView">
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="#E6E7E8"
+            android:text="@string/login" />
+
         <TextView
-                android:id="@+id/textview_location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="24sp"
-                android:textColor="#FFFFFF"
-                android:text="@string/login"/>
-        <TextView
-                android:id="@+id/textview_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="#FFFFFF"
-                android:text="@string/login"/>
+            android:id="@+id/textview_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="#E6E7E8"
+            android:text="@string/login" />
     </LinearLayout>
-    <Button
-            style="@style/ButtonNoOutline"
-            android:text="@string/edit_chill"
-            android:id="@+id/button_edit_chill"
-            android:background="@android:color/transparent"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_gravity="right"
-            android:layout_alignBottom="@+id/imageView"
-            android:layout_alignParentEnd="true"/>
+
+    <ImageButton
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:id="@+id/button_edit_chill"
+        android:src="@drawable/editicon"
+        android:scaleType="fitCenter"
+        android:background="@drawable/button_without_outline"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true" />
 </RelativeLayout>

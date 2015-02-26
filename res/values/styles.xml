@@ -9,6 +9,7 @@
         <item name="android:layout_gravity">center_horizontal</item>
     </style>
     <style name="EditTextUnderline">
+        <item name="android:inputType">textCapCharacters</item>
         <item name="android:maxLength">12</item>
         <item name="android:layout_width">300dp</item>
         <item name="android:layout_height">48dp</item>
@@ -26,16 +27,22 @@
     <style name="DetailsImageView">
         <item name="android:layout_width">50dp</item>
         <item name="android:layout_height">50dp</item>
+        <item name="android:layout_marginRight">6dp</item>
     </style>
     <style name="ListViewItem">
         <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">80dp</item>
+        <item name="android:layout_height">72dp</item>
     </style>
     <style name="ButtonNoOutline">
         <item name="android:layout_width">88dp</item>
         <item name="android:layout_height">36dp</item>
         <item name="android:textColor">#FFFFFF</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:background">@android:color/transparent</item>
+        <item name="android:background">@drawable/button_without_outline</item>
+    </style>
+    <style name="ImageButtonNoOutline">
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:background">@drawable/button_without_outline</item>
     </style>
 </resources>

@@ -20,6 +20,7 @@ import lombok.Data;
 public class EditChillActivity extends Activity {
     private LinearLayout mEditChillLayout;
     private Button mSaveButton;
+    private Button mCancelButton;
     private ImageButton mSelectChillTypeButton;
 
     private EditText mLocationEditText;
@@ -40,6 +41,7 @@ public class EditChillActivity extends Activity {
         mSelectChillTypeButton = (ImageButton) findViewById(R.id.button_select_chill_type);
 
         mSaveButton = (Button) findViewById(R.id.button_save);
+        mCancelButton = (Button) findViewById(R.id.button_cancel);
 
         mChillManager = new ChillManager(EditChillActivity.this);
         mTextValidator = new TextValidator();
@@ -68,6 +70,12 @@ public class EditChillActivity extends Activity {
                 startActivity(intent);
             }
         });
+        mCancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         initializeChillView();
     }
 
@@ -75,7 +83,7 @@ public class EditChillActivity extends Activity {
         final ChillPreference preference = mChillManager.getChillPreference();
         final ChillDefinition definition = mChillManager.getChillDefinition(preference.getChill().getId());
         setLayoutColor(mEditChillLayout, definition);
-        mSelectChillTypeButton.setBackground(getResources().getDrawable(definition.getLayout()));
+        mSelectChillTypeButton.setImageResource(definition.getLayout());
     }
 
     @Data

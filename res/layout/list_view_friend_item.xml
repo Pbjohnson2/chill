@@ -1,17 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              style="@style/ListViewItem"
-              android:orientation="vertical"
-              android:gravity="center_vertical"
-              android:background="#FFFFFF">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/ListViewItem"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    android:background="#FFFFFF">
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/usernameicon"
+        android:id="@+id/image_name"
+        android:layout_marginStart="16dp"
+        android:layout_centerVertical="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        android:text="A"
+        android:id="@+id/textview_username_alias"
+        android:gravity="center"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/image_name"
+        android:layout_alignEnd="@+id/image_name" />
+
     <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:textSize="48sp"
-            android:text="New Text"
-            android:id="@+id/username"
-            android:background="@android:color/transparent"
-            android:layout_gravity="center_vertical|center_horizontal"/>
-</LinearLayout>
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textSize="30sp"
+        android:text="New Text"
+        android:id="@+id/username"
+        android:background="@drawable/button_without_outline"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>

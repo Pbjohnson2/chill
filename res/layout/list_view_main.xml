@@ -1,16 +1,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
     <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                  android:id="@+id/swipe_refresh_layout"
-                                                  android:layout_width="match_parent"
-                                                  android:layout_height="wrap_content"
-                                                  android:background="#24E773">
+        android:id="@+id/swipe_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#24E773">
+
         <ListView
-                android:id="@+id/list_view_main"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#24E773"/>
+            android:id="@+id/list_view_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#24E773" />
     </android.support.v4.widget.SwipeRefreshLayout>
 
 </RelativeLayout>

@@ -86,12 +86,13 @@ public class ParseServiceAccessor implements ServiceAccessor{
     public void setMessageStatus(final Message message, final String status) {
         message.setStatus(status);
         final User from = message.getFrom();
+        final User to = message.getTo();
         message.saveInBackground();
         try {
             if (Message.STATUS_ACCEPTED.equals(status)) {
-                mSender.push(from, from.getUsername() + " is down to chill.");
+                mSender.push(from, to.getUsername() + " is down to chill.");
             } else {
-                mSender.push(message.getFrom(), from.getUsername() + " doesn't want to chill right now.");
+                mSender.push(message.getFrom(), to.getUsername() + " doesn't want to chill right now.");
             }
         } catch (ParseException e) {
         }

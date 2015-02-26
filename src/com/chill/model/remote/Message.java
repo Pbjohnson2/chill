@@ -5,9 +5,9 @@ import com.parse.ParseObject;
 
 @ParseClassName("Message")
 public class Message extends ParseObject{
-    public static final String STATUS_ACCEPTED = "accepted";
-    public static final String STATUS_PENDING = "pending";
-    public static final String STATUS_DECLINED = "declined";
+    public static final String STATUS_ACCEPTED = "ACCEPTED";
+    public static final String STATUS_PENDING = "PENDING";
+    public static final String STATUS_DECLINED = "DECLINED";
 
 
     public Message (){

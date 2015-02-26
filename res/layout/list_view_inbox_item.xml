@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginBottom="8dp"
+    android:id="@+id/linear_layout_all"
+    android:orientation="vertical">
+
+    <include layout="@layout/list_view_message_item" />
+
+    <View
+        android:id="@+id/style_bar"
+        android:layout_height="1dp"
+        android:layout_width="219dp"
+        android:background="#77FFFFFF"
+        android:layout_gravity="right" />
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linear_layout_action"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center_vertical">
+
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="#AAFFFFFF"
+                android:textSize="12sp"
+                android:id="@+id/textview_date_created"/>
+
+        <ImageView
+            android:layout_height="60dp"
+            android:layout_width="60dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/acceptwithbackgroundicon"
+            android:id="@+id/image_view_accept_background"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/image_view_dismiss"
+            android:visibility="invisible"/>
+
+        <ImageView
+            android:layout_height="60dp"
+            android:layout_width="60dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/acceptwithoutbackground"
+            android:id="@+id/image_view_accept"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/image_view_dismiss"
+            android:visibility="visible" />
+
+        <ImageView
+            android:layout_height="60dp"
+            android:layout_width="60dp"
+            android:src="@drawable/dismisswithbackgroundicon"
+            android:id="@+id/image_view_dismiss_background"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:visibility="invisible"/>
+
+        <ImageView
+            android:layout_height="60dp"
+            android:layout_width="60dp"
+            android:src="@drawable/dismisswithoutbackgroundicon"
+            android:id="@+id/image_view_dismiss"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:visibility="visible"/>
+
+        <Button
+            style="@style/ImageButtonNoOutline"
+            android:background="@drawable/button_without_outline"
+            android:layout_marginEnd="16dp"
+            android:id="@+id/button_accept"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/button_dismiss" />
+
+        <Button
+            style="@style/ImageButtonNoOutline"
+            android:background="@drawable/button_without_outline"
+            android:id="@+id/button_dismiss"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+</LinearLayout>

@@ -3,9 +3,6 @@ package com.chill.util;
 import android.content.Context;
 import com.chill.model.local.ChillPreference;
 
-/**
- * Created by Pierce on 10/26/2014.
- */
 public class PersistenceManager {
     private static final String CHILL_PREFERENCE_KEY = "chillPreference";
     private final PreferenceStore mPreferenceStore;

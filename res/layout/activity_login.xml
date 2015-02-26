@@ -1,52 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:gravity="center_vertical"
-              android:background="#2BAAE1">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:background="#2BAAE1">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:orientation="horizontal"
-                  android:layout_width="fill_parent"
-                  android:layout_height="wrap_content"
-                  android:gravity="center_horizontal"
-                  android:background="#2BAAE1">
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:background="#2BAAE1" android:weightSum="1">
 
         <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:id="@+id/image_view_logo"
-                android:background="@drawable/logo"
-                android:layout_gravity="center_horizontal"/>
-
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:textColor="#FFFFFF"
-                android:textSize="48sp"
-                android:text="@string/app_name"
-                android:id="@+id/textView"
-                android:gravity="bottom"/>
+            android:layout_width="0dp"
+            android:layout_height="186dp"
+            android:id="@+id/image_view_logo"
+            android:src="@drawable/logo"
+            android:layout_gravity="center_horizontal" android:layout_weight="0.24"/>
 
     </LinearLayout>
+
     <EditText
-            style="@style/EditTextUnderline"
-            android:hint="@string/username"
-            android:id="@+id/edit_text_username"/>
+        style="@style/EditTextUnderline"
+        android:hint="@string/username"
+        android:maxLength="10"
+        android:id="@+id/edit_text_username" />
+
     <EditText
-            style="@style/EditTextUnderline"
-            android:inputType="textPassword"
-            android:hint="@string/password"
-            android:layout_marginBottom="40dp"
-            android:id="@+id/edit_text_password"/>
+        style="@style/EditTextUnderline"
+        android:inputType="textPassword"
+        android:hint="@string/password"
+        android:layout_marginBottom="40dp"
+        android:id="@+id/edit_text_password" />
+
     <Button
-            style="@style/ButtonWithOutline"
-            android:text="@string/login"
-            android:id="@+id/button_login"/>
+        style="@style/ButtonWithOutline"
+        android:text="@string/login"
+        android:id="@+id/button_login" />
+
     <Button
-            style="@style/ButtonWithOutline"
-            android:layout_marginTop="20dp"
-            android:text="@string/register"
-            android:id="@+id/button_register"/>
+        style="@style/ButtonWithOutline"
+        android:layout_marginTop="20dp"
+        android:text="@string/register"
+        android:id="@+id/button_register" />
 </LinearLayout>

@@ -12,6 +12,7 @@ import com.chill.R;
 import com.chill.edit.EditChillActivity;
 import com.chill.model.local.ChillManager;
 import com.chill.model.local.chills.ChillDefinition;
+import com.chill.util.ImageLoader;
 import com.chill.views.contracts.ModelViewer;
 
 public class ChillDefinitionViewer implements ModelViewer<ChillDefinition> {
@@ -36,7 +37,7 @@ public class ChillDefinitionViewer implements ModelViewer<ChillDefinition> {
             holder.chillImageButton = (ImageButton) convertView.findViewById(R.id.image_button_chill);
 
             setLayoutColor(holder.layoutWithImageButton, item);
-            holder.chillImageButton.setBackground(context.getResources().getDrawable(item.getLayout()));
+            holder.chillImageButton.setImageBitmap(ImageLoader.decodeSampledBitmapFromResource(context, item.getLayout()));
 
             convertView.setTag(holder);
         } else {
