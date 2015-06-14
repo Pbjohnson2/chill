@@ -14,7 +14,7 @@
         android:descendantFocusability="beforeDescendants"
         android:focusableInTouchMode="true">
 
-        <com.chill.views.lists.FriendListView
+        <com.swerve.chill.views.lists.FriendListView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/friend_list_view" />
